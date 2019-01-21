@@ -1,0 +1,37 @@
+variable "name" {
+  description = "The name of the VPC"
+}
+
+variable "cidr" {
+  description = "The CIDR of the VPC"
+}
+
+variable "public_subnet" {
+  description = "The public subnet to create"
+}
+
+variable "enable_dns_hostnames" {
+  description = "Should be true if you want to use private DNS within the VPC"
+  default     = true
+}
+
+variable "enable_dns_support" {
+  description = "Should be true if you want to use private DNS within the VPC"
+  default     = true
+}
+
+output "public_subnet_id" {
+  description = "public subnet id"
+  value       = "${aws_subnet.public.id}"
+  sensitive   = true
+}
+
+output "vpc_id" {
+  description = "vpc id"
+  value       = "${aws_vpc.tfb.id}"
+}
+
+output "cidr" {
+  description = "cidr"
+  value       = "${aws_vpc.tfb.cidr_block}"
+}
